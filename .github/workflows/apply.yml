@@ -25,6 +25,9 @@ jobs:
     #     with:
     #       name: terraform-plan
     #       path: .
+      # Step 3: Terraform Init
+      - name: Terraform Init
+        run: terraform init
 
       # Step 4: Terraform Apply
       - name: Terraform Apply
