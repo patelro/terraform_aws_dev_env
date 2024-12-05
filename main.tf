@@ -58,6 +58,10 @@ resource "aws_vpc_security_group_ingress_rule" "mtc_sg_ingress" {
   to_port           = 22
   ip_protocol       = "tcp"
 
+  tags = {
+    Name = "dev-mtc-sg-ingress"
+  }
+
 }
 
 resource "aws_vpc_security_group_egress_rule" "mtc_sg_egress" {
@@ -72,7 +76,7 @@ resource "aws_key_pair" "mtc_auth" {
 }
 
 resource "aws_instance" "dev_node" {
-  ami                    = data.aws_ami.server_ami.id
+  ami                    = "ami-04dd23e62ed049936"
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.mtc_auth.id
   vpc_security_group_ids = [aws_security_group.mtc_sg.id]
