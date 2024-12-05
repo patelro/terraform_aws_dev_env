@@ -17,7 +17,7 @@ variable "public_subnet_cidr_block" {
 }
 
 variable "public_key" {
-  description = "mtckey.pub"
+  description = "Public key for EC2"
   type        = string
   sensitive   = true
 }
