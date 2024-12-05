@@ -15,3 +15,9 @@ variable "public_subnet_cidr_block" {
   type        = string
   sensitive   = true
 }
+
+variable "public_key" {
+  description = "mtckey.pub"
+  type        = string
+  sensitive   = true
+}

@@ -35,6 +35,7 @@ jobs:
           TF_VAR_vpc_cidr_block: ${{ vars.vpc_cidr_block }}
           TF_VAR_public_subnet_cidr_block: ${{ vars.public_subnet_cidr_block }}
           TF_VAR_my_ip: ${{ vars.my_ip }}
+          TF_VAR_public_key: ${{ vars.mtckey_pub }}
 
       # Step 5: Upload Plan as Artifact
       - name: Upload Terraform Plan

@@ -68,7 +68,7 @@ resource "aws_vpc_security_group_egress_rule" "mtc_sg_egress" {
 
 resource "aws_key_pair" "mtc_auth" {
   key_name = "mtckey"
-  public_key = file("~/.ssh/mtckey.pub")
+  public_key = var.public_key
 }
 
 resource "aws_instance" "dev_node" {
