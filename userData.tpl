@@ -1,19 +1,25 @@
-#!/bin/bash
+# Update the system's package index
+sudo apt-get update -y
 
-# Update apt and install dependencies
-sudo apt-get update
-sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+# Install required dependencies for Docker
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common gnupg-agent
 
-# Download Docker GPG key and verify fingerprint
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.gpg add -
+# Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# Verify the fingerprint for the GPG key
 sudo apt-key fingerprint 0EBFCD88
 
-# Add Docker repository to APT sources
+# Add Docker repository to the package sources
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-# Update apt and install Docker
-sudo apt-get update
-sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+# Update the package index again
+sudo apt-get update -y
 
-# Add Ubuntu user to Docker group
+# Install Docker CE (Community Edition)
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# Add the current user to the Docker group (to run Docker without sudo)
 sudo usermod -aG docker ubuntu
+
+# Log out and log back in (or restart SSH session) for group changes to take effect.
