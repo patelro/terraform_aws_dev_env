@@ -1,21 +1,21 @@
 name: Terraform Destroy
 
 on:
-  workflow_run:
-    workflows: ["Terraform Plan"]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   destroy:
+    name: Destroy Terraform Resources
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Terraform
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10.0
 
       - name: Initialize Terraform
         run: terraform init
