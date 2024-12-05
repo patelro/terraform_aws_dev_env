@@ -20,9 +20,6 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
 
-      - name: List Terraform State
-        run: terraform state list
-
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
