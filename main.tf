@@ -67,17 +67,17 @@ resource "aws_vpc_security_group_egress_rule" "mtc_sg_egress" {
 }
 
 resource "aws_key_pair" "mtc_auth" {
-  key_name = "mtckey"
+  key_name   = "mtckey"
   public_key = var.public_key
 }
 
 resource "aws_instance" "dev_node" {
-  ami = data.aws_ami.server_ami.id
-  instance_type = "t2.micro"
-  key_name = aws_key_pair.mtc_auth.id
+  ami                    = data.aws_ami.server_ami.id
+  instance_type          = "t2.micro"
+  key_name               = aws_key_pair.mtc_auth.id
   vpc_security_group_ids = [aws_security_group.mtc_sg.id]
-  subnet_id = aws_subnet.mtc_public_subnet.id
-  user_data = file("userData.tpl")
+  subnet_id              = aws_subnet.mtc_public_subnet.id
+  user_data              = file("userData.tpl")
 
   tags = {
     Name = "dev-node"
