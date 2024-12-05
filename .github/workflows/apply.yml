@@ -19,12 +19,12 @@ jobs:
         with:
           terraform_version: 1.10.0
 
-      # Step 3: Download Plan Artifact
-      - name: Download Terraform Plan
-        uses: actions/download-artifact@v3
-        with:
-          name: terraform-plan
-          path: .
+    #   # Step 3: Download Plan Artifact
+    #   - name: Download Terraform Plan
+    #     uses: actions/download-artifact@v3
+    #     with:
+    #       name: terraform-plan
+    #       path: .
 
       # Step 4: Terraform Apply
       - name: Terraform Apply
